@@ -157,11 +157,11 @@ public class Práctica_Programación_Estructurada {
                 int damage1 = (ataque1 - defensa2 + ataquerandom.nextInt(10) + 1);
                 vida2 -= damage1;
                 System.out.println("Jugador 1 ataca a Jugador 2 y causa " + damage1 + " puntos de daño.");
-            }
-            if (vida2 > 0) {
-                int damage2 = (ataque2 - defensa1 + ataquerandom.nextInt(10) + 1);
-                vida1 -= damage2;
-                System.out.println("Jugador 2 ataca a Jugador 1 y causa " + damage2 + " puntos de daño.");
+                if (vida2 > 0) {
+                    int damage2 = (ataque2 - defensa1 + ataquerandom.nextInt(10) + 1);
+                    vida1 -= damage2;
+                    System.out.println("Jugador 2 ataca a Jugador 1 y causa " + damage2 + " puntos de daño.");
+                }
             }
 
             //Jugador 2 atacara primero
@@ -176,8 +176,13 @@ public class Práctica_Programación_Estructurada {
                     System.out.println("Jugador 1 ataca a Jugador 2 y causa " + damage1 + " puntos de daño.");
                 }
             }
-            System.out.println("Vida Jugador 1: " + Math.max(vida1, 0));
-            System.out.println("Vida Jugador 2: " + Math.max(vida2, 0));
+            int barra1 = Math.max(vida1, 0) * 20 / 200;
+            int barra2 = Math.max(vida2, 0) * 20 / 200;
+            String vidaGrafica1 = "█".repeat(barra1) + "-".repeat(20 - barra1);
+            String vidaGrafica2 = "█".repeat(barra2) + "-".repeat(20 - barra2);
+
+            System.out.println("Jugador 1: " + Math.max(vida1, 0) + " " + vidaGrafica1);
+            System.out.println("Jugador 2: " + Math.max(vida2, 0) + " " + vidaGrafica2);
             turno++;
         }
     }
